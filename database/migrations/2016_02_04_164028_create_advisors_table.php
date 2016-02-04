@@ -14,8 +14,15 @@ class CreateAdvisorsTable extends Migration {
 	{
 		Schema::create('advisors', function(Blueprint $table)
 		{
-			$table->increments('id');
-			$table->timestamps();
+			$table->increments('adv_id');
+            $table->string('adv_fname');
+            $table->string('adv_lname');
+            $table->string('adv_email');
+            $table->string('adv_password');
+            $table->boolean('is_admin');
+            $table->boolean('is_active');
+            $table->timestamps();
+            
 		});
 	}
 

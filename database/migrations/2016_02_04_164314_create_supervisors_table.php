@@ -14,7 +14,11 @@ class CreateSupervisorsTable extends Migration {
 	{
 		Schema::create('supervisors', function(Blueprint $table)
 		{
-			$table->increments('id');
+			$table->increments('sup_id');
+            $table->string('sup_fname');
+            $table->string('sup_lname');
+            $table->string('sup_email');
+            $table->string('sup_phone');
 			$table->timestamps();
 		});
 	}

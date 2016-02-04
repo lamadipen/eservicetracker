@@ -14,7 +14,8 @@ class CreateServiceStatusesTable extends Migration {
 	{
 		Schema::create('service_statuses', function(Blueprint $table)
 		{
-			$table->increments('id');
+			$table->increments('sers_id');
+            $table->string('ser_stat');
 			$table->timestamps();
 		});
 	}
