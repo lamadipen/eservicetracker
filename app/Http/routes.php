@@ -13,6 +13,7 @@
 
 Route::get('/', 'WelcomeController@index');
 Route::get('home', 'HomeController@index');
+Route::get('create_advisor', 'WelcomeController@show');
 
 Route::resource('user', 'UserController');
 

@@ -32,5 +32,15 @@ class WelcomeController extends Controller {
 	{
 		return view('admin/master');
 	}
+    
+    	/**
+	 * Show the application welcome screen to the user.
+	 *
+	 * @return Response
+	 */
+	public function show()
+	{
+		return view('admin/advisor_create');
+	}
 
 }
