@@ -14,6 +14,13 @@
 Route::get('/', 'WelcomeController@index');
 Route::get('home', 'HomeController@index');
 Route::get('create_advisor', 'WelcomeController@show');
+Route::get('test_advisor', 'AdvisorController');
+
+
+Route::resource('advisor','AdvisorController');
+
+
+
 
 Route::resource('user', 'UserController');
 

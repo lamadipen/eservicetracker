@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
+use App\Advisor;
+
 class AdvisorController extends Controller {
 
 	/**
@@ -14,8 +16,20 @@ class AdvisorController extends Controller {
 	 */
 	public function index()
 	{
-		//
-	}
+		$advisor_all = Advisor::all();
+
+        
+        //echo "success";
+        //return view('advisor.advisor_list',['main_title'=>'Advisor Panel' ,'sub_title' => 'Register Advisor'])->with('advisors', $advisoer_all);
+	    
+        $data['main_tilte'] = 'Advisor Panel';
+        $data['sub_title'] = "List Advisor";
+        $date['advisors'] = $advisor_all;
+        
+        
+        return view('advisor.advisor_list')->with('advisors', $advisor_all);
+
+    }
 
 	/**
 	 * Show the form for creating a new resource.
@@ -25,6 +39,8 @@ class AdvisorController extends Controller {
 	public function create()
 	{
 		//
+        //return view('advisor/advisor_create',['main_title'=>'Advisor Panel' ,'sub_title' => 'Register Advisor']);
+        return view('advisor.advisor_create');
 	}
 
 	/**
@@ -34,7 +50,15 @@ class AdvisorController extends Controller {
 	 */
 	public function store()
 	{
-		//
+		$advisor = new Advisor();
+        $advisor->adv_fname = 'hari';
+        $advisor->adv_lname = 'hari';
+        $advisor->adv_password = 'hari';
+        $advisor->adv_email = 'hari';
+       
+        $advisor->save();
+        
+        //return view('advisor/advisor_create',['main_title'=>'Advisor Panel' ,'sub_title' => 'Register Advisor']);
 	}
 
 	/**
@@ -57,6 +81,8 @@ class AdvisorController extends Controller {
 	public function edit($id)
 	{
 		//
+        $advisor = Advisor::findOrFail($id);
+        return view('advisor.advisor_edit')->with('advisor', $advisor);
 	}
 
 	/**
@@ -65,9 +91,18 @@ class AdvisorController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id,Request $request)
 	{
 		//
+        $advisor = Advisor::find($id);
+        $advisor_update = $request->all();
+        //$advisor->name = $request->name;
+        //$advisor->status = $request->status;
+        $advisor->update($advisor_update);
+
+        //$category->fill($input)->save();
+        
+        return redirect()->route('advisor.index');
 	}
 
 	/**
@@ -79,6 +114,10 @@ class AdvisorController extends Controller {
 	public function destroy($id)
 	{
 		//
+        $advisor = Advisor::find($id);
+        $advisor->delete();
+        
+        return redirect()->route('advisor.index');
 	}
 
 }

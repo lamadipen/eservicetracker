@@ -1,20 +1,7 @@
         @extends('advisor.adv_master')
-        @section('body_template')  
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-          <h1>
-           Dash
-            <small>Version 2.0</small>
-          </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Dashboard</li>
-          </ol>
-        </section>
-
-        <!-- Main content -->
+        
+        @section('body_template')
+          <!-- Main content -->
         <section class="content">       
 
           <!-- Main row -->
@@ -24,33 +11,34 @@
               <!-- MAP & BOX PANE -->
               <div class="box box-success">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Create </h3>
+                  <h3 class="box-title">Edit </h3>
                 </div><!-- /.box-header -->
                 
                 <div class="box-body no-padding">
                   <div class="row">
                     <div class="col-md-9 col-sm-8">
-                      <div class="pad col-md-6">
-                        {!! Form::open(array('url' => 'category')) !!}
+                      <div class="pad col-md-12">
+                              {!! Form::model($advisor, array('route' =>array('advisor.update',$advisor->id), 'method' => 'PUT')) !!}
                                 <div class="form-group">
                                     <label>First Name</label>
-                                    {!! Form::text('fname', '' ,['class' => 'form-control', 'placeholder' => 'Category name']) !!}
+                                    {!! Form::text('fname', $advisor->adv_fname ,['class' => 'form-control', 'placeholder' => 'First name']) !!}
                                 </div>
                                 <div class="form-group">
                                     <label>Last Name</label>
-                                    {!! Form::text('lname', '' ,['class' => 'form-control', 'placeholder' => 'Category name']) !!}
+                                    {!! Form::text('lname', $advisor->adv_lname ,['class' => 'form-control', 'placeholder' => 'Last name']) !!}
                                 </div>
                                 <div class="form-group">
                                     <label>Email address</label>
-                                    {!! Form::text('email', '' ,['class' => 'form-control', 'placeholder' => 'Category name']) !!}
+                                    {!! Form::text('email', $advisor->adv_email ,['class' => 'form-control', 'placeholder' => 'Email address']) !!}
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
-                                    {!! Form::password('password', '' ,['class' => 'form-control', 'placeholder' => 'Category name']) !!}
+                                    {!! Form::password('password', '' ,['class' => 'form-control', 'placeholder' => 'Password']) !!}
                                 </div>
-                                    {!! Form::submit('Add', ['class' => 'btn btn-primary']) !!}
+                                    {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}
                             
-                        {!! Form::close() !!}
+                                {!! Form::close() !!}
+                 
                       </div>
                     </div><!-- /.col -->
                
@@ -62,4 +50,5 @@
           </div><!-- /.row -->
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
-      @endsection
+
+        @endsection
