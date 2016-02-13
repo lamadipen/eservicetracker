@@ -18,25 +18,17 @@ Route::get('test_advisor', 'AdvisorController');
 
 
 Route::resource('advisor','AdvisorController');
-
+Route::resource('service_type','ServiceTypeController');
+Route::resource('setting','SettingController');
+Route::get('invite', function() { return View::make('advisor.advisor_invite'); });
 
 
 
 Route::resource('user', 'UserController');
 
-Route::get('hello', function() {
-	return View::make('hello');
-});
 
-Route::get('teststring', function() {
-    return View::make('admin.category');
-});
 
-Route::get('admin', function()
-{
-    return View::make('admin.master');
-   //return 'hello';
-});
+Route::get('test', function() { return View::make('auth.login'); });
 
 Route::resource('category','CategoryController');
 Route::resource('meeting','MeetingController');

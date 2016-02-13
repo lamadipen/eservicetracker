@@ -18,10 +18,6 @@ class AdvisorController extends Controller {
 	{
 		$advisor_all = Advisor::all();
 
-        
-        //echo "success";
-        //return view('advisor.advisor_list',['main_title'=>'Advisor Panel' ,'sub_title' => 'Register Advisor'])->with('advisors', $advisoer_all);
-	    
         $data['main_tilte'] = 'Advisor Panel';
         $data['sub_title'] = "List Advisor";
         $date['advisors'] = $advisor_all;
@@ -48,17 +44,19 @@ class AdvisorController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
 		$advisor = new Advisor();
-        $advisor->adv_fname = 'hari';
-        $advisor->adv_lname = 'hari';
-        $advisor->adv_password = 'hari';
-        $advisor->adv_email = 'hari';
-       
+        $advisor->adv_fname = $request->fname;
+        $advisor->adv_lname = $request->lname;
+        $advisor->adv_password = $request->password;
+        $advisor->adv_email = $request->email;
+        $advisor->is_active = true;
+        
         $advisor->save();
         
         //return view('advisor/advisor_create',['main_title'=>'Advisor Panel' ,'sub_title' => 'Register Advisor']);
+        return redirect()->route('advisor.index');
 	}
 
 	/**

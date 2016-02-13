@@ -25,40 +25,35 @@
               <!-- MAP & BOX PANE -->
               <div class="box box-success">
                 <div class="box-header with-border">
-                  <h3 class="box-title">List Advisor </h3>
+                  <h3 class="box-title">Create </h3>
                 </div><!-- /.box-header -->
                 
                 <div class="box-body no-padding">
                   <div class="row">
                     <div class="col-md-9 col-sm-8">
                       <div class="pad col-md-12">
-                        		<a href="{{ url('/advisor/create') }}" class="btn btn-primary btn-sm">Add Advisor</a>
+                        		<a href="{{ url('/setting/create') }}" class="btn btn-primary btn-sm">Add Settings</a>
                             <table class="table">
     							<thead>
     								<tr>
     									<th>S.N</th>
     									<th>Name</th>
-    									<th>Active</th>
+    									<th>Hour</th>
                                         <th>Action</th>
     								</tr>
     							</thead>
     							<tbody>
                                     <?php $counter = 1;?>
-                                    @foreach($advisors as $advisor)
+                                    @foreach($settings as $setting)
     								<tr>
     									<td> {{ $counter++ }}</td>
-    									<td>{{ $advisor->adv_fname." ".$advisor->adv_lname }} </td>
-    									<td>@if ($advisor->is_active == true)
-                                                <img src="{{ asset('dist/img/yes.png') }}" class="img-circle" alt="true"/> 
-                                            @else 
-                                                <img src="{{ asset('dist/img/x.png') }}" class="img-circle" alt="true" /> 
-                                            @endif
-                                        </td>
+    									<td>{{ $setting->serty_id }}</td>
+    									<td>{{ $setting->sett_hour }}</td>
                                         <td>
-                                            <a class="btn btn-primary  btn-xs" href="{{ route('advisor.edit', $advisor->adv_id) }}">Edit</a> | 
-                                            {!! Form::open(array('url' => 'advisor/' . $advisor->adv_id)) !!}
+                                            <a class="btn btn-green btn-xs" href="{{ route('setting.edit', $setting->sett_id) }}">Edit</a> | 
+                                            {!! Form::open(array('url' => 'setting/' . $setting->sett_id)) !!}
                                                 {!! Form::hidden('_method', 'DELETE') !!}
-                                                {!! Form::submit('Delete', array('class' => 'btn btn-danger btn-xs')) !!}
+                                                {!! Form::submit('Delete', array('class' => 'btn btn-red btn-xs')) !!}
                                             {!! Form::close() !!}
                                             
                                         </td>
