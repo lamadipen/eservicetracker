@@ -24,34 +24,22 @@
               <!-- MAP & BOX PANE -->
               <div class="box box-success">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Create Advisor</h3>
+                  <h3 class="box-title">Edit Service Type</h3>
                 </div><!-- /.box-header -->
                 
                 <div class="box-body no-padding">
                   <div class="row">
                     <div class="col-md-9 col-sm-8">
                       <div class="pad col-md-6">
-                       <form method="POST" action="{{ url('/advisor') }}" role="form" accept-charset="UTF-8">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        	<div class="form-group">
-                        		<label>First Name</label>
-                        		<input class="form-control" placeholder="First name" name="fname" type="text" value="">
-                        	</div>
-                        	<div class="form-group">
-                        		<label>Last Name</label>
-                        		<input class="form-control" placeholder="Last name" name="lname" type="text" value="">
-                        	</div>
-                        	<div class="form-group">
-                        		<label>Email address</label>
-                        		<input class="form-control" placeholder="Email address" name="email" type="text" value="">
-                        	</div>
-                        	<div class="form-group">
-                        		<label>Password</label>
-                        		<input class="form-control" name="password" type="password" value="">
-                        	</div>
-                        		<input class="btn btn-primary" type="submit" value="Add">
-                        
-                        </form>
+
+                        {!! Form::model($service_type, array('route' =>array('service_type.update',$service_type->id), 'method' => 'PUT')) !!}
+                                <div class="form-group">
+                                    <label>Service Name</label>
+                                    {!! Form::text('serty_name', $service_type->serty_name ,['class' => 'form-control', 'placeholder' => 'Service name']) !!}
+                                </div>
+                                {!! Form::submit('Add', ['class' => 'btn btn-primary']) !!}
+                            
+                        {!! Form::close() !!}
                       </div>
                     </div><!-- /.col -->
                

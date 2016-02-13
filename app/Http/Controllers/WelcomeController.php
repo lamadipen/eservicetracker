@@ -40,7 +40,7 @@ class WelcomeController extends Controller {
 	 */
 	public function show()
 	{
-		return view('admin/advisor_create');
+		return view('advisor/advisor_create',['main_title'=>'Advisor Panel' ,'sub_title' => 'Register Advisor']);
 	}
 
 }
